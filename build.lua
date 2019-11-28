@@ -9,7 +9,7 @@ sourcefiles={"*.dtx"}
 installfiles={"*.sty","*.lua"}
 scriptfiles={"*.lua"}
 
-
+checkconfigs = {"config-luatex"}
  
 packtdszip  = true
 

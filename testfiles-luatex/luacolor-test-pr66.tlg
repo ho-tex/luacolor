@@ -83,10 +83,9 @@ regression-test.tex
   luatex.def    ....-..-.. v... Graphics/color driver for luatex
 luacolor.sty    ....-..-.. v... Color support via LuaTeX's attributes (HO)
 infwarerr.sty    ....-..-.. v... Providing info/warning/error messages (HO)
-ifluatex.sty    ....-..-.. v... ifluatex legacy package. Use iftex instead.
    iftex.sty    ....-..-.. v... TeX engine tests
-   ifpdf.sty    ....-..-.. v... ifpdf legacy package. Use iftex instead.
  ltxcmds.sty    ....-..-.. v... LaTeX kernel commands for general use (HO)
 atbegshi.sty    ....-..-.. v... At begin shipout hook (HO)
+   ifpdf.sty    ....-..-.. v... ifpdf legacy package. Use iftex instead.
 supp-pdf.mkii
  ***********
