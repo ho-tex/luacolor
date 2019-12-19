@@ -86,6 +86,5 @@ infwarerr.sty    ....-..-.. v... Providing info/warning/error messages (HO)
    iftex.sty    ....-..-.. v... TeX engine tests
  ltxcmds.sty    ....-..-.. v... LaTeX kernel commands for general use (HO)
 atbegshi.sty    ....-..-.. v... At begin shipout hook (HO)
-   ifpdf.sty    ....-..-.. v... ifpdf legacy package. Use iftex instead.
 supp-pdf.mkii
  ***********
