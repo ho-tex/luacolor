@@ -810,6 +810,17 @@ function luacolor.process(box)
 end
 %    \end{macrocode}
 %    \end{macro}
+% For recent versions of luaotfload, we can register a callback to
+% control how coloring glyph is handled for the color feature.
+%    \begin{macrocode}
+if luaotfload.set_colorhandler then
+  local set_attribute = node.direct.set_attribute
+  luaotfload.set_colorhandler(function(head, n, color)
+    set_attribute(n, attribute, luacolor.getvalue(color))
+    return head, n
+  end)
+end
+%    \end{macrocode}
 %
 %    \begin{macrocode}
 %</lua>
