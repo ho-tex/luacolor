@@ -344,17 +344,12 @@ and the derived files
 %
 %    Without \LuaTeX\ there is no point in using this package.
 %    \begin{macrocode}
-\RequirePackage{iftex}[2019/11/07]%
 \RequirePackage{ltxcmds}[2011/04/18]%
 \RequirePackage{color}
 %    \end{macrocode}
 % require ltluatex rather than luatex package support for \LuaTeX\ allocations.
 %    \begin{macrocode}
-\ifluatex
-  \ifx\newattribute\@undefined
-    \RequirePackage{ltluatex}%
- \fi
-\else
+\ifx\directlua\@undefined
   \PackageError{luacolor}{%
     This package may only be run using LuaTeX%
   }\@ehc
@@ -415,7 +410,7 @@ and the derived files
 % \subsection{Find driver}
 %
 %    \begin{macrocode}
-\ifpdf
+\ifnum\outputmode=\@ne
 \else
   \begingroup
     \def\current@color{}%
@@ -510,7 +505,7 @@ and the derived files
 % \subsection{\cs{pdfxform} support}
 %
 %    \begin{macrocode}
-\ifpdf
+\ifnum\outputmode=\@ne
   \ifx\pdfxform\@undefined
     \let\pdfxform\saveboxresource
   \fi
@@ -1067,7 +1062,7 @@ end
 %   \item  Use \xpackage{iftex} directly.
 %   \end{Version}
 %   \begin{Version}{2020-02-22 v1.14}
-%   \item Use LaTeX Package warnings directly
+%   \item Drop use of \textsf{iftex} and \textsf{infwarerr}.
 %   \end{Version}
 % \end{History}
 %
