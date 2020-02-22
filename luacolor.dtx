@@ -344,7 +344,6 @@ and the derived files
 %
 %    Without \LuaTeX\ there is no point in using this package.
 %    \begin{macrocode}
-\RequirePackage{infwarerr}[2010/04/08]%
 \RequirePackage{iftex}[2019/11/07]%
 \RequirePackage{ltxcmds}[2011/04/18]%
 \RequirePackage{color}
@@ -356,7 +355,7 @@ and the derived files
     \RequirePackage{ltluatex}%
  \fi
 \else
-  \@PackageError{luacolor}{%
+  \PackageError{luacolor}{%
     This package may only be run using LuaTeX%
   }\@ehc
   \expandafter\LuaCol@AtEnd
@@ -374,7 +373,7 @@ and the derived files
 %    \begin{macrocode}
 \ifcolors@
 \else
-  \@PackageWarningNoLine{luacolor}{%
+  \PackageWarningNoLine{luacolor}{%
     Colors are disabled by option `monochrome'%
   }%
   \def\set@color{}%
@@ -404,7 +403,7 @@ and the derived files
   }%
   \ifx\x\y
   \else
-    \@PackageError{luacolor}{%
+    \PackageError{luacolor}{%
       Wrong version of lua module.\MessageBreak
       Package version: \x\MessageBreak
       Lua module: \y
@@ -432,16 +431,16 @@ and the derived files
       }%
     }%
     \ifx\reserved@a\@empty
-      \@PackageError{luacolor}{%
+      \PackageError{luacolor}{%
         DVI driver detection failed because of\MessageBreak
         unrecognized color \string\special
       }\@ehc
       \endgroup
       \expandafter\expandafter\expandafter\LuaCol@AtEnd
     \else
-      \@PackageInfoNoLine{luacolor}{%
+      \PackageInfo{luacolor}{%
         Type of color \string\special: \reserved@a
-      }%
+      \@gobble}%
     \fi%
   \endgroup
 \fi
@@ -526,12 +525,12 @@ and the derived files
       \directlua{tex.enableprimitives('',{'protected'})}%
   }{}%
   \ltx@IfUndefined{pdfxform}{%
-    \@PackageWarning{luacolor}{\string\pdfxform\space not found}%
+    \PackageWarning{luacolor}{\string\pdfxform\space not found}%
   }{%
     \let\LuaCol@org@pdfxform\pdfxform
     \begingroup\expandafter\expandafter\expandafter\endgroup
     \expandafter\ifx\csname protected\endcsname\relax
-      \@PackageWarning{luacolor}{\string\protected\space not found}%
+      \PackageWarning{luacolor}{\string\protected\space not found}%
     \else
       \expandafter\protected
     \fi
@@ -1068,7 +1067,7 @@ end
 %   \item  Use \xpackage{iftex} directly.
 %   \end{Version}
 %   \begin{Version}{2020-02-22 v1.14}
-%   \item Updated
+%   \item Use LaTeX Package warnings directly
 %   \end{Version}
 % \end{History}
 %

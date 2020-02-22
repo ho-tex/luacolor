@@ -82,10 +82,10 @@ regression-test.tex
    color.cfg    ....-..-.. v... sample color configuration
   luatex.def    ....-..-.. v... Graphics/color driver for luatex
 luacolor.sty    ....-..-.. v... Color support via LuaTeX's attributes (HO)
-infwarerr.sty    ....-..-.. v... Providing info/warning/error messages (HO)
    iftex.sty    ....-..-.. v... TeX engine tests
  ltxcmds.sty    ....-..-.. v... LaTeX kernel commands for general use (HO)
 atbegshi.sty    ....-..-.. v... At begin shipout hook (HO)
+infwarerr.sty    ....-..-.. v... Providing info/warning/error messages (HO)
 l3backend-pdfmode.def    ....-..-.. L3 backend support: PDF mode
   ts1cmr.fd    ....-..-.. v... Standard LaTeX font definitions
 supp-pdf.mkii
