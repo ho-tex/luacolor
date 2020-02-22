@@ -1034,6 +1034,8 @@ end
 %   \item Drop use of \textsf{iftex} \textsf{ltxcmds} and \textsf{infwarerr}.
 %   \item Assume \textsf{ltluatex} preloaded into format (true since 2015).
 %   \item Path \verb|\saveboxresource| rather than \verb|\pdfxform| (keep old name as alias).
+%   \item Grab the number via Lua so that a \verb|\immediate| prefix still works with
+%         \verb|\saveboxresource|\slash \verb|\pdfxform|.
 %   \end{Version}
 % \end{History}
 %
