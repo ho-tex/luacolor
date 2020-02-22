@@ -86,5 +86,7 @@ infwarerr.sty    ....-..-.. v... Providing info/warning/error messages (HO)
    iftex.sty    ....-..-.. v... TeX engine tests
  ltxcmds.sty    ....-..-.. v... LaTeX kernel commands for general use (HO)
 atbegshi.sty    ....-..-.. v... At begin shipout hook (HO)
+l3backend-pdfmode.def    ....-..-.. L3 backend support: PDF mode
+  ts1cmr.fd    ....-..-.. v... Standard LaTeX font definitions
 supp-pdf.mkii
  ***********
