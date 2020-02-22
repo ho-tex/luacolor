@@ -344,10 +344,9 @@ and the derived files
 %
 %    Without \LuaTeX\ there is no point in using this package.
 %    \begin{macrocode}
-\RequirePackage{ltxcmds}[2011/04/18]%
 \RequirePackage{color}
 %    \end{macrocode}
-% require ltluatex rather than luatex package support for \LuaTeX\ allocations.
+%
 %    \begin{macrocode}
 \ifx\directlua\@undefined
   \PackageError{luacolor}{%
@@ -445,16 +444,8 @@ and the derived files
 %
 %    \begin{macro}{\LuaCol@Attribute}
 %    \begin{macrocode}
-\ltx@IfUndefined{newluatexattribute}{%
-  \newattribute\LuaCol@Attribute
-}{%
-  \newluatexattribute\LuaCol@Attribute
-}
-\ltx@IfUndefined{setluatexattribute}{%
-  \let\LuaCol@setattribute\setattribute
-}{%
-  \let\LuaCol@setattribute\setluatexattribute
-}
+\newattribute\LuaCol@Attribute
+\let\LuaCol@setattribute\setattribute
 \LuaCol@directlua{%
   oberdiek.luacolor.setattribute(\number\allocationnumber)%
 }
@@ -502,34 +493,12 @@ and the derived files
 \set@color
 %    \end{macrocode}
 %
-% \subsection{\cs{pdfxform} support}
+% \subsection{\cs{pdfxform}/\cs{saveboxresource} support}
 %
 %    \begin{macrocode}
 \ifnum\outputmode=\@ne
-  \ifx\pdfxform\@undefined
-    \let\pdfxform\saveboxresource
-  \fi
-  \ltx@IfUndefined{pdfxform}{%
-      \directlua{%
-        tex.enableprimitives('',{%
-          'pdfxform','pdflastxform','pdfrefxform'%
-        })%
-      }%
-  }{}%
-  \ltx@IfUndefined{protected}{%
-      \directlua{tex.enableprimitives('',{'protected'})}%
-  }{}%
-  \ltx@IfUndefined{pdfxform}{%
-    \PackageWarning{luacolor}{\string\pdfxform\space not found}%
-  }{%
-    \let\LuaCol@org@pdfxform\pdfxform
-    \begingroup\expandafter\expandafter\expandafter\endgroup
-    \expandafter\ifx\csname protected\endcsname\relax
-      \PackageWarning{luacolor}{\string\protected\space not found}%
-    \else
-      \expandafter\protected
-    \fi
-    \def\pdfxform{%
+    \let\LuaCol@org@pdfxform\saveboxresource
+    \protected\def\saveboxresource{%
       \begingroup
       \afterassignment\LuaCol@pdfxform
       \count@=%
@@ -539,7 +508,10 @@ and the derived files
       \LuaCol@org@pdfxform\count@
       \endgroup
     }%
-  }%
+%    \end{macrocode}
+%    Legacy alias.
+%    \begin{macrocode}
+    \let\pdfxform\saveboxresource
 \fi
 %    \end{macrocode}
 %
@@ -1062,7 +1034,9 @@ end
 %   \item  Use \xpackage{iftex} directly.
 %   \end{Version}
 %   \begin{Version}{2020-02-22 v1.14}
-%   \item Drop use of \textsf{iftex} and \textsf{infwarerr}.
+%   \item Drop use of \textsf{iftex} \textsf{ltxcmds} and \textsf{infwarerr}.
+%   \item Assume \textsf{ltluatex} preloaded into format (true since 2015).
+%   \item Path \verb|\saveboxresource| rather than \verb|\pdfxform| (keep old name as alias).
 %   \end{Version}
 % \end{History}
 %
