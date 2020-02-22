@@ -499,14 +499,11 @@ and the derived files
 \ifnum\outputmode=\@ne
     \let\LuaCol@org@pdfxform\saveboxresource
     \protected\def\saveboxresource{%
-      \begingroup
-      \afterassignment\LuaCol@pdfxform
-      \count@=%
-    }%
-    \def\LuaCol@pdfxform{%
-      \luacolorProcessBox\count@
-      \LuaCol@org@pdfxform\count@
-      \endgroup
+      \directlua{
+        local c = token.scan_int()
+        oberdiek.luacolor.process(c)
+        token.put_next(token.create'LuaCol@org@pdfxform', token.new(c, token.command_id'char_given'))
+      }%
     }%
 %    \end{macrocode}
 %    Legacy alias.
