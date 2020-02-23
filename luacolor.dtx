@@ -721,8 +721,10 @@ local function traverse(list, color, dry)
         traverse(n.leader, color, DRY_FALSE or dry)
       else
         traverse(n.leader, '', DRY_FALSE or dry)
+%    \end{macrocode}
 % The color status is unknown here, because the leader box
 % will or will not be set.
+%    \begin{macrocode}
         color = ''
       end
     elseif t == COLOR then
