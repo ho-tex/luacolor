@@ -493,6 +493,10 @@ and the derived files
 %    \begin{macrocode}
 \ifnum\outputmode=\@ne
     \let\LuaCol@org@pdfxform\saveboxresource
+%    \end{macrocode}
+% This is written in Lua so the integer setting is expandable and does not interfere with
+% a preceding \verb|\immediate|.
+%    \begin{macrocode}
     \protected\def\saveboxresource{%
       \directlua{
         local c = token.scan_int()
