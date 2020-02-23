@@ -7,7 +7,7 @@ textfiles = {"README.md"}
 unpackfiles = {'luacolor.dtx'}
 sourcefiles={"*.dtx"}
 installfiles={"*.sty","*.lua"}
-scriptfiles={"*.lua"}
+
 
 checkconfigs = {"config-luatex"}
  
