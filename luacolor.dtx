@@ -351,12 +351,6 @@ and the derived files
 \fi%
 %    \end{macrocode}
 %
-%    \begin{macro}{\LuaCol@directlua}
-%    \begin{macrocode}
-  \let\LuaCol@directlua\directlua
-%    \end{macrocode}
-%    \end{macro}
-%
 % \subsection{Check for disabled colors}
 %
 %    \begin{macrocode}
@@ -376,15 +370,15 @@ and the derived files
 % \subsection{Load module and check version}
 %
 %    \begin{macrocode}
-\LuaCol@directlua{%
+\directlua{%
   require("luacolor")%
 }
 %    \end{macrocode}
 %    \begin{macrocode}
 \begingroup
-  \edef\x{\LuaCol@directlua{tex.write("2020-02-22 v1.14")}}%
+  \edef\x{\directlua{tex.write("2020-02-22 v1.14")}}%
   \edef\y{%
-    \LuaCol@directlua{%
+    \directlua{%
       if oberdiek.luacolor.getversion then %
         oberdiek.luacolor.getversion()%
       end%
@@ -415,7 +409,7 @@ and the derived files
       \endgroup
     }%
     \edef\reserved@a{%
-      \LuaCol@directlua{%
+      \directlua{%
         oberdiek.luacolor.dvidetect()%
       }%
     }%
@@ -441,7 +435,7 @@ and the derived files
 %    \begin{macrocode}
 \newattribute\LuaCol@Attribute
 \let\LuaCol@setattribute\setattribute
-\LuaCol@directlua{%
+\directlua{%
   oberdiek.luacolor.setattribute(\number\allocationnumber)%
 }
 %    \end{macrocode}
@@ -451,7 +445,7 @@ and the derived files
 %    \begin{macrocode}
 \protected\def\set@color{%
   \LuaCol@setattribute\LuaCol@Attribute{%
-    \LuaCol@directlua{%
+    \directlua{%
       oberdiek.luacolor.get("\luaescapestring{\current@color}")%
     }%
   }%
@@ -469,7 +463,7 @@ and the derived files
 %    \begin{macro}{\luacolorProcessBox}
 %    \begin{macrocode}
 \def\luacolorProcessBox#1{%
-  \LuaCol@directlua{%
+  \directlua{%
     oberdiek.luacolor.process(\number#1)%
   }%
 }
