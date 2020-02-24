@@ -488,16 +488,98 @@ and the derived files
 \ifnum\outputmode=\@ne
     \let\LuaCol@org@pdfxform\saveboxresource
 %    \end{macrocode}
+% First we need some helpers to allow expandable code to parse keyword style arguments:
+%    \begin{macrocode}
+    \def\LuaCol@iii@i@ii#1#2#3{#3{#1}{#2}}
+    \def\LuaCol@ii@i#1#2{{#2#1}}
+    \def\LuaCol@if@keyword#1#2#3{%
+      \expanded{\unexpanded{\LuaCol@iii@i@ii{#2}{#3}}\expandafter}%
+      \directlua{%
+        token.put_next(token.create(token.scan_keyword(token.scan_string())
+        and '@firstoftwo'
+        or '@secondoftwo'))
+      }{#1}%
+    }
+%    \end{macrocode}
+% The following macro scans a integer and expands to a token equivalent to a chardef
+% whose value corresponds to the scanned integer. This allows the integer to be passed
+% around as a undelimited argument.
+%    \begin{macrocode}
+    \def\LuaCol@scan@number{%
+      \directlua{
+        token.put_next(token.new(token.scan_int(), token.command_id'char_given'))
+      }%
+    }
+%    \end{macrocode}
+% \TeX\ primitives like \cs{saveboxresource} read braced arguments in a special way.
+% Especially they expand everything until they find a left brace. To simulate this, we
+% use Lua to expand everything else:
+%    \begin{macrocode}
+    \def\LuaCol@scan@tobrace{%
+      \directlua{
+        local relax, space = token.command_id'relax', token.command_id'spacer'
+        local t
+        repeat
+          t = token.scan_token()
+        until not (t.command == relax or t.command == space)
+        token.put_next(t)
+      }%
+    }
+    \def\LuaCol@scan@boxresource@i#1#2{%
+      \LuaCol@if@keyword{attr}{%
+        \expanded{\unexpanded{\LuaCol@scan@boxresource@iI{#1#2attr}}%
+          \expandafter\expandafter\expandafter}%
+        \LuaCol@scan@tobrace
+      }{%
+        \LuaCol@scan@boxresource@ii{#1#2}%
+      }%
+    }
+    \def\LuaCol@scan@boxresource@iI#1#2{\LuaCol@scan@boxresource@ii{#1{#2}}}
+    \def\LuaCol@scan@boxresource@ii#1{%
+      \LuaCol@if@keyword{resources}{%
+        \expanded{\unexpanded{\LuaCol@scan@boxresource@iiI{#1resources}}%
+          \expandafter\expandafter\expandafter}%
+        \LuaCol@scan@tobrace
+      }{%
+        \LuaCol@scan@boxresource@iii{#1}%
+      }%
+    }
+    \def\LuaCol@scan@boxresource@iiI#1#2{\LuaCol@scan@boxresource@iii{#1{#2}}}
+    \def\LuaCol@scan@boxresource@iii#1{%
+      \LuaCol@if@keyword{margin}{%
+        \expanded{\unexpanded{\LuaCol@scan@boxresource@iv{#1margin }}%
+          \expandafter\expandafter\expandafter}%
+        \LuaCol@scan@number
+      }{%
+        \LuaCol@scan@boxresource@iv{#1}{}%
+      }%
+    }
+    \def\LuaCol@scan@boxresource@iv#1#2{%
+      \expanded{\unexpanded{\LuaCol@scan@boxresource@v{#1#2}}%
+        \expandafter\expandafter\expandafter}%
+      \LuaCol@scan@number
+    }
+    \def\LuaCol@scan@boxresource@v#1#2{%
+      \luacolorProcessBox{#2}%
+      \LuaCol@org@pdfxform#1#2%
+    }
+
+%    \end{macrocode}
+% This could be written in Lua, but at least upto Lua\TeX~1.11, feeding back too many tokens
+% from Lua to \TeX\ triggers a segmentation fault.
 % This is written in Lua so the integer setting is expandable and does not interfere with
 % a preceding \verb|\immediate|.
 %    \begin{macrocode}
     \protected\def\saveboxresource{%
-      \directlua{
-        local c = token.scan_int()
-        oberdiek.luacolor.process(c)
-        token.put_next(token.create'LuaCol@org@pdfxform', token.new(c, token.command_id'char_given'))
+      \LuaCol@if@keyword{type}{%
+        \expandafter
+        \expanded{\unexpanded{\LuaCol@scan@boxresource@i{type }}%
+          \expandafter\expandafter\expandafter}%
+        \LuaCol@scan@number
+      }{%
+        \LuaCol@scan@boxresource@i{}{}%
       }%
-    }%
+    }
 %    \end{macrocode}
 %    Legacy alias.
 %    \begin{macrocode}
