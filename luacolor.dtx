@@ -1,7 +1,7 @@
 % \iffalse meta-comment
 %
 % File: luacolor.dtx
-% Version: 2020-02-24 v1.15
+% Version: 2020-04-04 v1.16
 % Info: Color support via LuaTeX's attributes
 %
 % Copyright (C)
@@ -80,7 +80,7 @@
 \input docstrip.tex
 \Msg{************************************************************************}
 \Msg{* Installation}
-\Msg{* Package: luacolor 2020-02-24 v1.15 Color support via LuaTeX's attributes (HO)}
+\Msg{* Package: luacolor 2020-04-04 v1.16 Color support via LuaTeX's attributes (HO)}
 \Msg{************************************************************************}
 
 \keepsilent
@@ -92,7 +92,7 @@
 This is a generated file.
 
 Project: luacolor
-Version: 2020-02-24 v1.15
+Version: 2020-04-04 v1.16
 
 Copyright (C)
    2007, 2009-2011 Heiko Oberdiek
@@ -169,7 +169,7 @@ and the derived files
 %<*driver>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesFile{luacolor.drv}%
-  [2020-02-24 v1.15 Color support via LuaTeX's attributes (HO)]%
+  [2020-04-04 v1.16 Color support via LuaTeX's attributes (HO)]%
 \documentclass{ltxdoc}
 \usepackage{holtxdoc}[2011/11/22]
 \usepackage{paralist}
@@ -189,7 +189,7 @@ and the derived files
 % \GetFileInfo{luacolor.drv}
 %
 % \title{The \xpackage{luacolor} package}
-% \date{2020-02-24 v1.15}
+% \date{2020-04-04 v1.16}
 % \author{Heiko Oberdiek\thanks
 % {Please report any issues at \url{https://github.com/ho-tex/luacolor/issues}}}
 %
@@ -332,7 +332,7 @@ and the derived files
 %    \begin{macrocode}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{luacolor}%
-  [2020-02-24 v1.15 Color support via LuaTeX's attributes (HO)]
+  [2020-04-04 v1.16 Color support via LuaTeX's attributes (HO)]
 %    \end{macrocode}
 %
 % \subsection{Check for \LuaTeX}
@@ -376,7 +376,7 @@ and the derived files
 %    \end{macrocode}
 %    \begin{macrocode}
 \begingroup
-  \edef\x{\directlua{tex.write("2020-02-24 v1.15")}}%
+  \edef\x{\directlua{tex.write("2020-04-04 v1.16")}}%
   \edef\y{%
     \directlua{%
       if oberdiek.luacolor.getversion then %
@@ -608,7 +608,7 @@ oberdiek.luacolor = luacolor
 %    \begin{macro}{getversion()}
 %    \begin{macrocode}
 function luacolor.getversion()
-  tex.write("2020-02-24 v1.15")
+  tex.write("2020-04-04 v1.16")
 end
 %    \end{macrocode}
 %    \end{macro}
@@ -1135,6 +1135,9 @@ end
 %   \end{Version}
 %   \begin{Version}{2020-02-24 v1.15}
 %   \item Grab all possible arguments for \verb|\saveboxresource|\slash \verb|\pdfxform|
+%   \end{Version}
+%   \begin{Version}{2020-04-04 v1.16}
+%   \item Reset color after pdf_colorstack whatsits.
 %   \end{Version}
 % \end{History}
 %
