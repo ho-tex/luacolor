@@ -727,6 +727,7 @@ local LIST = 1
 local LIST_LEADERS = 2
 local LIST_DISC = 3
 local COLOR = 4
+local NOCOLOR = 5
 local RULE = node.id("rule")
 local node_types = {
   [node.id("hlist")] = LIST,
@@ -735,6 +736,10 @@ local node_types = {
   [node.id("glyph")] = COLOR,
   [node.id("disc")]  = LIST_DISC,
   [node.id("whatsit")] = {
+    [node.subtype("pdf_colorstack")] =
+      function(n)
+        return n.stack == 0 and NOCOLOR or nil
+      end,
     [node.subtype("special")] = COLOR,
     [node.subtype("pdf_literal")] = COLOR,
     [node.subtype("pdf_save")] = COLOR,
@@ -829,6 +834,8 @@ local function traverse(list, color, dry)
           end
         end
       end
+    elseif t == NOCOLOR then
+      color = ''
     end
   end
   if get_type(list) == LIST then
