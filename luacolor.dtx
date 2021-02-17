@@ -471,9 +471,15 @@ and the derived files
 %    \end{macro}
 %
 %    \begin{macrocode}
-\RequirePackage{atbegshi}[2011/01/30]
-\AtBeginShipout{%
-  \luacolorProcessBox\AtBeginShipoutBox
+\directlua{%
+  if luatexbase.callbacktypes.pre_shipout_filter then
+    token.get_next()
+  end
+}\@secondoftwo\@gobble{
+  \RequirePackage{atbegshi}[2011/01/30]
+  \AtBeginShipout{%
+    \luacolorProcessBox\AtBeginShipoutBox
+  }
 }
 %    \end{macrocode}
 %
@@ -854,6 +860,13 @@ function luacolor.process(box)
   local color = ""
   local list = tex.getbox(box)
   traverse(list, color, DRY_FALSE)
+end
+
+if luatexbase.callbacktypes.pre_shipout_filter then
+  luatexbase.add_to_callback("pre_shipout_filter", function(list)
+    traverse(list, "", DRY_FALSE)
+    return true
+  end, "luacolor.process")
 end
 %    \end{macrocode}
 %    \end{macro}
