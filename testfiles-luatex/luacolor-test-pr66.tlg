@@ -12,6 +12,13 @@ Overfull \hbox (36.0pt too wide) detected at line 22
 ..\rule(10.0+2.0)x36.0
 Completed box being shipped out [1]
 \vbox(632.5+0.0)x429.0, direction TLT
+.\hbox(0.0+0.0)x0.0, direction TLT
+..\kern-72.26999
+..\vbox(0.0+0.0)x0.0, glue set 72.26999fil, direction TLT
+...\kern-72.26999
+...\hbox(0.0+0.0)x0.0, direction TLT
+....\glue 0.0 plus 1.0fil minus 1.0fil
+...\glue 0.0 plus 1.0fil minus 1.0fil
 .\glue 17.0
 .\vbox(615.5+0.0)x390.0, shifted 39.0, direction TLT
 ..\vbox(12.0+0.0)x390.0, glue set 12.0fil, direction TLT
@@ -43,6 +50,7 @@ Completed box being shipped out [1]
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0
 ...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
 ...\glue(\baselineskip) 2.5
 ...\hbox(10.0+2.0)x390.0, glue set 371.00397fil, direction TLT
 ....\localpar
@@ -73,6 +81,7 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil
 ....\TU/lmr/m/n/12 1
 ....\glue 0.0 plus 1.0fil
+.\kern0.0
 (luacolor-test-pr66.aux)
  *File List*
 regression-test.tex
@@ -81,9 +90,8 @@ regression-test.tex
   xcolor.sty    ....-..-.. v... LaTeX color extensions (UK)
    color.cfg    ....-..-.. v... sample color configuration
   luatex.def    ....-..-.. v... Graphics/color driver for luatex
+mathcolor.ltx
 luacolor.sty    ....-..-.. v... Color support via LuaTeX's attributes (HO)
-atbegshi-ltx.sty    ....-..-.. v... Emulation of the original atbegshi package
-with kernel methods
 l3backend-luatex.def    ....-..-.. L3 backend support: PDF output (LuaTeX)
   ts1cmr.fd    ....-..-.. v... Standard LaTeX font definitions
 supp-pdf.mkii
