@@ -236,9 +236,9 @@ and the derived files
 %
 % At last the attribute annotations of the nodes in the
 % output box must be analyzed to insert the necessary color whatsits.
-% Currently \LuaTeX\ lacks an appropriate callback function.
-% Therefore package \xpackage{atbegshi} is used to get control
-% before a box is shipped out.
+% (With older \LuaTeX\ that lack the appropriate callback function 
+% the package \xpackage{atbegshi} is used to get control
+% before a box is shipped out.)
 %
 % \begin{declcs}{luacolorProcessBox} \M{box}
 % \end{declcs}
@@ -256,7 +256,7 @@ and the derived files
 %   the paragraph building and page breaking, when a
 %   page is to be shipped out. Therefore it cannot
 %   break ligatures, because the components might occupy
-%   different space. Therefore it is the respondibility
+%   different space. Therefore it is the responsibility
 %   of the ligature forming process to deal with different
 %   colored glyphs that form a ligature. The user can avoid
 %   the problem entirely by explicitly breaking the ligature
@@ -1157,7 +1157,7 @@ end
 %   \end{Version}
 %   \begin{Version}{2021-02-17 v1.17}
 %   \item Use \LaTeXe's new \verb|pre_shipout_filter| callback if it's available to
-%         allow coloring background and foregrund layer material
+%         allow coloring background and foreground layer material
 %   \end{Version}
 %   \begin{Version}{2023-08-18 v1.18}
 %   \item added \verb|\reset@color| to \verb|\set@color| for \verb|\mathcolor|, issue 7.
