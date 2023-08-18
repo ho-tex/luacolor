@@ -1,12 +1,12 @@
 % \iffalse meta-comment
 %
 % File: luacolor.dtx
-% Version: 2021-02-17 v1.17
+% Version: 2023-08-18 v1.18
 % Info: Color support via LuaTeX's attributes
 %
 % Copyright (C)
 %    2007, 2009-2011 Heiko Oberdiek
-%    2016-2021 Oberdiek Package Support Group
+%    2016-2023 Oberdiek Package Support Group
 %    https://github.com/ho-tex/luacolor/issues
 %
 % This work may be distributed and/or modified under the
@@ -80,7 +80,7 @@
 \input docstrip.tex
 \Msg{************************************************************************}
 \Msg{* Installation}
-\Msg{* Package: luacolor 2021-02-17 v1.17 Color support via LuaTeX's attributes (HO)}
+\Msg{* Package: luacolor 2023-08-18 v1.18 Color support via LuaTeX's attributes (HO)}
 \Msg{************************************************************************}
 
 \keepsilent
@@ -92,11 +92,11 @@
 This is a generated file.
 
 Project: luacolor
-Version: 2021-02-17 v1.17
+Version: 2023-08-18 v1.18
 
 Copyright (C)
    2007, 2009-2011 Heiko Oberdiek
-   2016-2021 Oberdiek Package Support Group
+   2016-2023 Oberdiek Package Support Group
 
 This work may be distributed and/or modified under the
 conditions of the LaTeX Project Public License, either
@@ -169,7 +169,7 @@ and the derived files
 %<*driver>
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesFile{luacolor.drv}%
-  [2021-02-17 v1.17 Color support via LuaTeX's attributes (HO)]%
+  [2023-08-18 v1.18 Color support via LuaTeX's attributes (HO)]%
 \documentclass{ltxdoc}
 \usepackage{holtxdoc}[2011/11/22]
 \usepackage{paralist}
@@ -189,7 +189,7 @@ and the derived files
 % \GetFileInfo{luacolor.drv}
 %
 % \title{The \xpackage{luacolor} package}
-% \date{2021-02-17 v1.17}
+% \date{2023-08-18 v1.18}
 % \author{Heiko Oberdiek\thanks
 % {Please report any issues at \url{https://github.com/ho-tex/luacolor/issues}}}
 %
@@ -332,7 +332,7 @@ and the derived files
 %    \begin{macrocode}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{luacolor}%
-  [2021-02-17 v1.17 Color support via LuaTeX's attributes (HO)]
+  [2023-08-18 v1.18 Color support via LuaTeX's attributes (HO)]
 %    \end{macrocode}
 %
 % \subsection{Check for \LuaTeX}
@@ -376,7 +376,7 @@ and the derived files
 %    \end{macrocode}
 %    \begin{macrocode}
 \begingroup
-  \edef\x{\directlua{tex.write("2021-02-17 v1.17")}}%
+  \edef\x{\directlua{tex.write("2023-08-18 v1.18")}}%
   \edef\y{%
     \directlua{%
       if oberdiek.luacolor.getversion then %
@@ -617,7 +617,7 @@ oberdiek.luacolor = luacolor
 %    \begin{macro}{getversion()}
 %    \begin{macrocode}
 function luacolor.getversion()
-  tex.write("2021-02-17 v1.17")
+  tex.write("2023-08-18 v1.18")
 end
 %    \end{macrocode}
 %    \end{macro}
@@ -1162,7 +1162,6 @@ end
 %   \begin{Version}{2023-08-18 v1.18}
 %   \item added \verb|\reset@color| to \verb|\set@color| for \verb|\mathcolor|, issue 7.
 %   \end{Version}
-
 % \end{History}
 %
 % \PrintIndex
